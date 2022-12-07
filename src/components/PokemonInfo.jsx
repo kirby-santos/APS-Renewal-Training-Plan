@@ -1,11 +1,11 @@
 import React from 'react';
 import PokemonType from "../PokemonType";
 
-import { useSelector } from 'react-redux';
+import useStore from '../store';
 
 const PokemonInfo = () => {
-    const selectedPokemon = useSelector(state => state.selectedPokemon);
-
+    const selectedPokemon = useStore(state => state.selectedPokemon);
+    
     return selectedPokemon ? (
         <div>
             <h2>{selectedPokemon.name.english}</h2>
@@ -14,7 +14,7 @@ const PokemonInfo = () => {
                 Object.keys(selectedPokemon.base).map(key=> (
                 <tr key={key}>
                     <td>{key}</td>
-                    <td>{selectedPokemon[key]}</td>
+                    <td>{selectedPokemon.base[key]}</td>
                 </tr>
                 ))
             }
